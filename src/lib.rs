@@ -1,5 +1,6 @@
 mod any_of;
 mod char;
+mod max_of;
 mod min_of;
 mod n_of;
 mod one_or_more;
