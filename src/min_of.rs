@@ -6,11 +6,8 @@ pub struct MinOf {
 }
 
 impl MinOf {
-    fn new(n: usize, parser: impl Parser + 'static) -> Self {
-        MinOf {
-            n,
-            parser: Box::new(parser),
-        }
+    fn new(n: usize, parser: Box<dyn Parser + 'static>) -> Self {
+        MinOf { n, parser }
     }
 }
 
@@ -59,7 +56,7 @@ impl Parser for MinOf {
     }
 }
 
-pub fn min_of(n: usize, parser: impl Parser + 'static) -> MinOf {
+pub fn min_of(n: usize, parser: Box<dyn Parser + 'static>) -> MinOf {
     MinOf::new(n, parser)
 }
 

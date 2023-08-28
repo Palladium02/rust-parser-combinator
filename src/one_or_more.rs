@@ -5,10 +5,8 @@ pub struct OneOrMore {
 }
 
 impl OneOrMore {
-    fn new(parser: impl Parser + 'static) -> Self {
-        OneOrMore {
-            parser: Box::new(parser),
-        }
+    fn new(parser: Box<dyn Parser + 'static>) -> Self {
+        OneOrMore { parser }
     }
 }
 
@@ -53,7 +51,7 @@ impl Parser for OneOrMore {
     }
 }
 
-pub fn one_or_more(parser: impl Parser + 'static) -> OneOrMore {
+pub fn one_or_more(parser: Box<dyn Parser + 'static>) -> OneOrMore {
     OneOrMore::new(parser)
 }
 

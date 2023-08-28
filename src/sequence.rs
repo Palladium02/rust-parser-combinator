@@ -54,14 +54,14 @@ mod tests {
 
     #[test]
     fn to_string() {
-        let p = sequence(vec![Box::new(character('a')), Box::new(character('b'))]);
+        let p = sequence(vec![character('a'), character('b')]);
 
         assert_eq!(p.to_string(), "ab".to_string())
     }
 
     #[test]
     fn parse() {
-        let p = sequence(vec![Box::new(character('a')), Box::new(character('b'))]);
+        let p = sequence(vec![character('a'), character('b')]);
 
         let result = p.parse(&"ab".to_string());
 

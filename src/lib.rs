@@ -6,6 +6,7 @@ mod n_of;
 mod one_or_more;
 mod parser;
 mod sequence;
+mod word;
 mod zero_or_more;
 
 pub fn add(left: usize, right: usize) -> usize {

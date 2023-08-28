@@ -43,8 +43,8 @@ impl Parser for Char {
     }
 }
 
-pub fn character(expected: char) -> Char {
-    Char::new(expected)
+pub fn character(expected: char) -> Box<dyn Parser + 'static> {
+    Box::new(Char::new(expected))
 }
 
 #[cfg(test)]

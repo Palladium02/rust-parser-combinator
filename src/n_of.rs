@@ -6,11 +6,8 @@ pub struct NOf {
 }
 
 impl NOf {
-    fn new(n: usize, parser: impl Parser + 'static) -> Self {
-        NOf {
-            n,
-            parser: Box::new(parser),
-        }
+    fn new(n: usize, parser: Box<dyn Parser + 'static>) -> Self {
+        NOf { n, parser: parser }
     }
 }
 
@@ -48,7 +45,7 @@ impl Parser for NOf {
     }
 }
 
-pub fn n_of(n: usize, parser: impl Parser + 'static) -> NOf {
+pub fn n_of(n: usize, parser: Box<dyn Parser + 'static>) -> NOf {
     NOf::new(n, parser)
 }
 

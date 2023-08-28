@@ -5,10 +5,8 @@ pub struct ZeroOrMore {
 }
 
 impl ZeroOrMore {
-    fn new(parser: impl Parser + 'static) -> Self {
-        ZeroOrMore {
-            parser: Box::new(parser),
-        }
+    fn new(parser: Box<dyn Parser + 'static>) -> Self {
+        ZeroOrMore { parser }
     }
 }
 
@@ -44,8 +42,8 @@ impl Parser for ZeroOrMore {
     }
 }
 
-pub fn zero_or_more(parser: impl Parser + 'static) -> ZeroOrMore {
-    ZeroOrMore::new(parser)
+pub fn zero_or_more(parser: Box<dyn Parser + 'static>) -> Box<dyn Parser + 'static> {
+    Box::new(ZeroOrMore::new(parser))
 }
 
 #[cfg(test)]

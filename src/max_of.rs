@@ -6,11 +6,8 @@ pub struct MaxOf {
 }
 
 impl MaxOf {
-    fn new(n: usize, parser: impl Parser + 'static) -> Self {
-        MaxOf {
-            n,
-            parser: Box::new(parser),
-        }
+    fn new(n: usize, parser: Box<dyn Parser + 'static>) -> Self {
+        MaxOf { n, parser }
     }
 }
 
@@ -41,7 +38,7 @@ impl Parser for MaxOf {
     }
 }
 
-pub fn max_of(n: usize, parser: impl Parser + 'static) -> MaxOf {
+pub fn max_of(n: usize, parser: Box<dyn Parser + 'static>) -> MaxOf {
     MaxOf::new(n, parser)
 }
 

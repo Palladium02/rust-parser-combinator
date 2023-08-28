@@ -44,13 +44,13 @@ mod tests {
 
     #[test]
     fn to_string() {
-        let p = any_of(vec![Box::new(character('a')), Box::new(character('b'))]);
+        let p = any_of(vec![character('a'), character('b')]);
         assert_eq!(p.to_string(), "a|b".to_string())
     }
 
     #[test]
     fn parse() {
-        let p = any_of(vec![Box::new(character('a')), Box::new(character('b'))]);
+        let p = any_of(vec![character('a'), character('b')]);
 
         let r1 = p.parse(&"a".to_string());
         assert_eq!(r1.is_ok(), true);
